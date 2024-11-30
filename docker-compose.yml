@@ -1,0 +1,31 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        REACT_APP_API_URL: http://backend:4000 
+    ports:
+      - "3002:3002"
+    container_name: frontend-container
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000"
+    container_name: backend-container
+    restart: unless-stopped
+    command: ["npm", "start"]
+
+  mongodb:
+    image: mongo:4.2
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
