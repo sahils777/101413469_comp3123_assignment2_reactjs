@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const employeeController = require('../controllers/employeeController');
-const Employee = require('../models/Employee'); // Correctly import the Employee model
+const Employee = require('../models/Employee');
 
-// Search for employees based on department and position
 router.get('/employees/search', async (req, res) => {
   try {
     const { department, position } = req.query;

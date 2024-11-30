@@ -28,10 +28,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        {/* Routes for the employee list and forms */}
         <Route path="/employees" element={<EmployeeList />} />
-        <Route path="/employees/add" element={<EmployeeForm isEdit={false} />} /> {/* For Add Employee */}
-        <Route path="/employees/edit/:id" element={<EmployeeForm isEdit={true} />} /> {/* For Edit Employee */}
+        <Route path="/employees/add" element={<EmployeeForm isEdit={false} />} />
+        <Route path="/employees/edit/:id" element={<EmployeeForm isEdit={true} />} />
       </Routes>
     </Router>
   );

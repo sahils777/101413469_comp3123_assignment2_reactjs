@@ -1,4 +1,3 @@
-// src/components/EmployeeForm.js
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -6,19 +5,18 @@ import axios from 'axios';
 
 const EmployeeForm = ({ isEdit }) => {
   const navigate = useNavigate();
-  const { id } = useParams(); // Get the employee ID from the URL
+  const { id } = useParams(); // Getting the employee ID from the URL
   const [employeeData, setEmployeeData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     position: '',
-    department: '', // Added department field
+    department: '',
     salary: ''
   });
 
   useEffect(() => {
     if (isEdit && id) {
-      // Fetch employee details for editing when isEdit is true
       axios
         .get(`http://localhost:3000/api/v1/emp/employees/${id}`)
         .then((response) => setEmployeeData(response.data))
@@ -32,18 +30,16 @@ const EmployeeForm = ({ isEdit }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Employee data being sent to backend:', employeeData); // Log the data before sending it
-  
+    console.log('Employee data being sent to backend:', employeeData);
+
     try {
       const token = localStorage.getItem('token');
       if (isEdit) {
-        // Edit employee request
         await axios.put(`http://localhost:3000/api/v1/emp/employees/${id}`, employeeData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         alert('Employee updated successfully');
       } else {
-        // Add employee request
         await axios.post('http://localhost:3000/api/v1/emp/employees', employeeData, {
           headers: { Authorization: `Bearer ${token}` }
         });

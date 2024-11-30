@@ -1,4 +1,4 @@
-const Employee = require('../models/Employee'); // Adjust this path based on your actual folder structure
+const Employee = require('../models/Employee');
 
 // Create a new employee
 exports.createEmployee = async (req, res) => {

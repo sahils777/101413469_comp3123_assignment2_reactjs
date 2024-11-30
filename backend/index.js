@@ -1,12 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./db'); 
+const connectDB = require('./db');
 
 const app = express();
 
-// Enable CORS for specific origin
 app.use(cors({
-  origin: 'http://localhost:3002', // Allow requests from your frontend URL
+  origin: 'http://localhost:3002',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 

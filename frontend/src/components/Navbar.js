@@ -6,16 +6,15 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  // Check if the user is logged in by checking for a token in localStorage
   useEffect(() => {
     const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token); // Set logged-in status based on token presence
-  }, []); // Run this effect only once when the component mounts
+    setIsLoggedIn(!!token);
+  }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Remove the token on logout
-    setIsLoggedIn(false); // Update the state to reflect logged-out status
-    navigate('/login'); // Redirect to login page
+    localStorage.removeItem('token'); // Removing the token on logout
+    setIsLoggedIn(false);
+    navigate('/login'); // Redirecting to the login page
   };
 
   return (
@@ -25,7 +24,6 @@ const Navbar = () => {
           Employee Management System
         </Typography>
         <Box display="flex">
-          {/* Render buttons based on login status */}
           {isLoggedIn ? (
             <>
               <Button color="inherit" component={Link} to="/employees">

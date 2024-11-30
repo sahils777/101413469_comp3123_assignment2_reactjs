@@ -12,7 +12,7 @@ const Signup = () => {
   });
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMsg, setSnackbarMsg] = useState('');
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,8 +24,7 @@ const Signup = () => {
       const response = await axios.post('http://localhost:3000/api/v1/user/signup', formData);
       setSnackbarMsg(response.data.message);
       setOpenSnackbar(true);
-      
-      // Navigate to the login page after a short delay for user feedback
+
       setTimeout(() => {
         navigate('/login');
       }, 1500); // 1.5 seconds delay

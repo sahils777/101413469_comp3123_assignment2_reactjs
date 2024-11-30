@@ -1,4 +1,3 @@
-// src/components/Login.js
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Paper, Snackbar } from '@material-ui/core';
 import axios from 'axios';
@@ -25,12 +24,12 @@ const Login = () => {
       setSnackbarMsg('Login successful');
       setOpenSnackbar(true);
 
-      // Navigate to the Employee List page after a short delay
+
       setTimeout(() => {
-        navigate('/employees'); // Redirect to Employee List page
-      }, 1500); // 1.5 seconds delay
+        navigate('/employees'); // Redirecting to the Employee List page
+      }, 1500);
     } catch (error) {
-      console.error('Login error:', error.response || error); // Log the error for debugging
+      console.error('Login error:', error.response || error);
       setSnackbarMsg(error.response?.data?.message || 'Login failed');
       setOpenSnackbar(true);
     }
